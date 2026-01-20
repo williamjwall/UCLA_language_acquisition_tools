@@ -100,4 +100,3 @@ subject_id,age,sex,study_name,word,word_column,section_number,section_title,cdi_
 - Word matching is case-insensitive and handles variations (spaces vs underscores)
 - Some words may not be found in the section mapping (marked as "UNMAPPED")
 - The processing script handles special cases like "chicken.animal" vs "chicken.food"
-
