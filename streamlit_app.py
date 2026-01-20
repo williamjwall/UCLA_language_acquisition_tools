@@ -118,7 +118,17 @@ if uploaded_file is not None:
                         )
                         words_json = df_metrics.iloc[selected_idx]['words_produced']
                     words_data = json.loads(words_json)
-                    st.json(words_data)
+                    
+                    # Transform to section-based structure: {section_title: [words]}
+                    section_words = {}
+                    for word_entry in words_data:
+                        section_title = word_entry.get('section_title', 'Unknown')
+                        word = word_entry.get('word', '')
+                        if section_title not in section_words:
+                            section_words[section_title] = []
+                        section_words[section_title].append(word)
+                    
+                    st.json(section_words)
             
             if 'parent_info' in df_metrics.columns:
                 with st.expander("Subject Info (JSON)", expanded=False):
